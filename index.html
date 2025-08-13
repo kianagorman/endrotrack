@@ -1,32 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <link rel="stylesheet" href="style.css">
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnduroTrack</title>
+    <title>Enduro Track Extreme Running & Body App</title>
     <link rel="stylesheet" href="style.css">
-</head> <link rel="apple-touch-icon" href="icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+</head>
 <body>
-    <header>
-        <h1>EnduroTrack</h1>
-        <p>Extreme running and body metrics app</p>
-    </header>
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn" id="homeBtn">Home</button>
+        <button class="nav-btn" id="performanceBtn">Performance</button>
+        <button class="nav-btn" id="bodyBtn">Body</button>
+        <button class="nav-btn" id="foodBtn">Food</button>
+        <button class="nav-btn" id="activityBtn">Activity</button>
+        <button class="nav-btn" id="profileBtn">Profile</button>
+    </nav>
 
-    <main>
-        <section id="dashboard">
-            <h2>Dashboard</h2>
-            <p>Your metrics will show here.</p>
-        </section>
-    </main>
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page">
+        <h2>Good Morning</h2>
+        <div class="cards">
+            <div class="card" id="caloriesCard">
+                <h3>Calories</h3>
+                <canvas id="caloriesDoughnut"></canvas>
+                <p>Protein: 120g | Carbs: 250g | Fat: 50g</p>
+            </div>
+            <div class="card" id="sleepCard">
+                <h3>Sleep Score</h3>
+                <p>7h 42m</p>
+            </div>
+            <div class="card" id="trainingCard">
+                <h3>Training Status</h3>
+                <p>Productive | VO2 Max: 63</p>
+            </div>
+            <div class="card" id="loadCard">
+                <h3>Load Focus</h3>
+                <p>Aerobic | High</p>
+            </div>
+            <div class="card" id="eventsCard">
+                <h3>Events <button class="add-btn">+</button></h3>
+                <ul>
+                    <li>Life Force Ultra - 12 km - 10/08/2025</li>
+                    <li>Training Run - 8 km - 12/08/2025</li>
+                </ul>
+            </div>
+            <div class="card" id="nextWorkoutCard">
+                <h3>Next AI Workout</h3>
+                <p>Zone 2 - 10 km</p>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        <p>© 2025 EnduroTrack</p>
-    </footer>
+    <!-- PERFORMANCE STATS PAGE -->
+    <div id="performancePage" class="page">
+        <h2>Performance Stats</h2>
+        <div class="metric-cards">
+            <div class="metric-card" data-metric="VO2max">
+                <h3>VO2 Max: 63</h3>
+                <canvas class="metricGraph" id="vo2Graph"></canvas>
+                <button class="editMetric">Change Metric</button>
+            </div>
+            <div class="metric-card" data-metric="weeklyKm">
+                <h3>Weekly KM</h3>
+                <canvas class="metricGraph" id="weeklyKmGraph"></canvas>
+            </div>
+            <div class="metric-card" data-metric="loadPoints">
+                <h3>Load Points</h3>
+                <canvas class="metricGraph" id="loadGraph"></canvas>
+            </div>
+        </div>
+    </div>
 
+    <!-- BODY TRACKING PAGE -->
+    <div id="bodyPage" class="page">
+        <h2>Body Tracking</h2>
+        <div class="body-figure">
+            <canvas id="bodyCanvas"></canvas>
+        </div>
+        <div class="measurements">
+            <label>Biceps: <input type="number" id="bicepsInput" value="26"></label>
+            <label>Chest: <input type="number" id="chestInput" value="90"></label>
+            <label>Waist: <input type="number" id="waistInput" value="70"></label>
+            <label>Hips: <input type="number" id="hipsInput" value="95"></label>
+            <label>Calves: <input type="number" id="calvesInput" value="35"></label>
+            <p>Body Score: <span id="bodyScore">85</span></p>
+        </div>
+    </div>
+
+    <!-- FOOD TRACKING PAGE -->
+    <div id="foodPage" class="page">
+        <h2>Food Tracking</h2>
+        <div class="food-doughnut">
+            <canvas id="foodDoughnut"></canvas>
+            <p>Protein: 120g | Carbs: 250g | Fat: 50g</p>
+            <button class="add-btn">Add Food</button>
+        </div>
+        <div class="meal-list">
+            <h3>Last Meal</h3>
+            <ul>
+                <li class="meal-item">Chicken Salad - 350 cal
+                    <button class="zoomMeal">Zoom</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ACTIVITY CENTER PAGE -->
+    <div id="activityPage" class="page">
+        <h2>Activity Center</h2>
+        <div class="filter-bar">
+            <button class="filter-btn" data-type="all">All</button>
+            <button class="filter-btn" data-type="run">Run</button>
+            <button class="filter-btn" data-type="ride">Ride</button>
+            <button class="filter-btn" data-type="swim">Swim</button>
+        </div>
+        <div class="activity-feed" id="activityFeed">
+            <!-- posts dynamically added here -->
+        </div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div id="profilePage" class="page">
+        <div class="profile-header">
+            <div class="background-img"></div>
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/100" alt="Profile Picture">
+                <button class="edit-btn">Edit</button>
+            </div>
+        </div>
+        <div class="profile-content">
+            <div class="left-info">
+                <p>Name: Jane</p>
+                <p>Age: 16</p>
+                <p>Height: 178cm</p>
+                <p>Weight: 61kg</p>
+                <p>VO2 Max: 63</p>
+            </div>
+            <div class="right-info">
+                <p>Last Activity: 10 km Run</p>
+                <p>Body Score: 85</p>
+                <canvas id="miniBodyFigure"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
